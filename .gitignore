@@ -30,4 +30,6 @@ HELP.md
 .vscode/
 
 ### private ###
-*.properties
+application.properties
+application-dev.properties
+application-prd.properties
