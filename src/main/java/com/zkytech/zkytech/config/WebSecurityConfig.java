@@ -73,11 +73,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PersistentTokenRepository persistentTokenRepository(){
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
+        // 程序启动时自动创建表
+        // 首次运行后需要将这行注释掉
 //        tokenRepository.setCreateTableOnStartup(true);
+
         return tokenRepository;
     }
-
-
 
 
     /**

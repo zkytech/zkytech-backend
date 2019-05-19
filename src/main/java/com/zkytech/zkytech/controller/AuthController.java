@@ -132,9 +132,6 @@ public class AuthController {
      */
     @GetMapping("code")
     public void getImgCode(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
-
-        String text = captchaProducer.createText();
-        BufferedImage image = captchaProducer.createImage(text);
         // 60秒过期的验证码
         ImgCode imgCode = utils.getImgCode();
         session.setAttribute(SESSION_KEY_IMAGE_CODE, imgCode);

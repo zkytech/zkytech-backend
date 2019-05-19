@@ -42,10 +42,10 @@ public class Carousel {
     @Column(nullable = false, columnDefinition = "varchar(50) default ''")
      private String title; //显示在轮播图之上的文字
 
-    @Column(nullable = false, columnDefinition = "int default 0")
+    @Column(nullable = false, columnDefinition = "int(2) default 0",name = "carousel_rank")
      private int rank; //排序序号，用于确定轮播顺序
 
-    @Column(nullable = false,columnDefinition = "boolean default false")
+    @Column(nullable = false,columnDefinition = "boolean default 0")
      private boolean active;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") @Temporal(TemporalType.TIMESTAMP) @CreatedDate
