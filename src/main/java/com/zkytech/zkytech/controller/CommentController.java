@@ -2,17 +2,14 @@ package com.zkytech.zkytech.controller;
 
 import com.zkytech.zkytech.Utils;
 import com.zkytech.zkytech.bean.MyApiResponse;
-import com.zkytech.zkytech.bean.UserType;
 import com.zkytech.zkytech.entity.Comment;
 import com.zkytech.zkytech.entity.User;
 import com.zkytech.zkytech.entity.Vote;
 import com.zkytech.zkytech.repository.CommentRepository;
 import com.zkytech.zkytech.repository.UserRepository;
 import com.zkytech.zkytech.repository.VoteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;

@@ -87,7 +87,6 @@ public class AuthController {
     @PostMapping("signup")
     @ResponseBody
     public MyApiResponse signup(@RequestBody SignupParams params, HttpSession session) {
-        System.out.println(params);
         MyApiResponse apiResponse = new MyApiResponse();
         if (session.getAttribute(SESSION_KEY_IMAGE_CODE) == null) {
             apiResponse.setSuccess(false);
@@ -104,7 +103,7 @@ public class AuthController {
             // 发送验证邮件
             Long userId = userRepository.findUserByUsername(params.getUsername()).getId();
 
-            // 这在并发量超大时是不行的
+            // 这在并发量大时是不行的
             pool.execute(()-> mailService.sendHtmlMail(params.getEmail(), "zkyTech-验证邮件", utils.getMailContent(userId, params.getUsername())));
         } else {
             apiResponse.setSuccess(false);

@@ -39,13 +39,13 @@ public class Carousel {
     @NonNull @NotNull(message = "文章Id不能为空") @Column(nullable = false)
      private Long articleId;
 
-    @Column(nullable = false, columnDefinition = "varchar(50) default ''")
+    @Column(nullable = false, columnDefinition = "varchar(50) default ''",insertable = false)
      private String title; //显示在轮播图之上的文字
 
-    @Column(nullable = false, columnDefinition = "int(2) default 0",name = "carousel_rank")
+    @Column(nullable = false, columnDefinition = "int(2) default 0",name = "carousel_rank",insertable = false)
      private int rank; //排序序号，用于确定轮播顺序
 
-    @Column(nullable = false,columnDefinition = "boolean default 0")
+    @Column(nullable = false,columnDefinition = "tinyint(1) default 0",insertable = false)
      private boolean active;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") @Temporal(TemporalType.TIMESTAMP) @CreatedDate

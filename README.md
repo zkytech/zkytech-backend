@@ -1,5 +1,7 @@
 # 个人博客后端
 
+这是后端，需要结合[前端](https://github.com/zkytech/zkytech-frontend)一起使用
+
 ## 相关技术
 
 语言：Java
@@ -18,6 +20,14 @@
 
 2. 编辑`src/main/java/com.zkytech.zkytech/config/WebSecurityConfig`，将第78行的注释取消掉。
 
-4. 启动运行
+3. 启动运行
 
-这是后端，需要结合[前端](https://github.com/zkytech/zkytech-frontend)一起使用
+4. 编辑`src/main/java/com.zkytech.zkytech/config/WebSecurityConfig`，将第78行注释掉。
+
+
+### 管理员账号注册方法
+
+编辑`src/main/java/com.zkytech.zkytech/controller/AuthController`第101行，将`UserType.DEFAULT`修改为`UserType.ADMIN`
+
+注册完成后再修改回来即可
+

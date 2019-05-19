@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
+import java.util.Optional;
 
 //@RepositoryRestResource(exported = true)
 public interface ArticleRepository extends JpaRepository<Article, Long> {
@@ -23,6 +24,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<Article> findArticlesWithoutContent(Pageable pageable);
 
     @Query(value= "select sum(ar.clicks) from Article ar")
-    int getTotalClicks();
+    Optional<Integer> getTotalClicks();
 
 }

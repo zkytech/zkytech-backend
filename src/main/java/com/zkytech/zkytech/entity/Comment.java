@@ -21,6 +21,7 @@ import java.util.Date;
 @RequiredArgsConstructor(staticName = "of")
 @EntityListeners(AuditingEntityListener.class)
 @Data
+@DynamicInsert @DynamicUpdate
 public class Comment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private long id;
@@ -90,7 +91,7 @@ public class Comment {
     /**
      * 评论是否已被评论对象阅读
      */
-    @Column(columnDefinition = "boolean default false",name = "comment_read")
+    @Column(columnDefinition = "tinyint(1) default 0",name = "comment_read")
     private boolean read;
 
     public String getAvatar(){

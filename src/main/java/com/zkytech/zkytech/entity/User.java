@@ -3,6 +3,8 @@ package com.zkytech.zkytech.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Date;
 
@@ -20,6 +23,8 @@ import java.util.Date;
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access= AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class) //配合@CreateDate、@LastModifiedDate
+@DynamicInsert
+@DynamicUpdate
 @Data
 public class User implements UserDetails {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
@@ -51,7 +56,7 @@ public class User implements UserDetails {
     @NotEmpty(message = "邮箱地址不能为空")
     @NonNull  private String email;
 
-    @Column(columnDefinition = "BOOLEAN DEFAULT false")
+    @Column(columnDefinition = "tinyint(1) default 0",insertable = false)
     // 用户邮箱是否经过验证
     private boolean verified;
 
@@ -60,7 +65,8 @@ public class User implements UserDetails {
     //注册日期
     private Date createdDate;
 
-    @Column(columnDefinition = "boolean default true")
+    @Column(columnDefinition = "tinyint(1) default 1",insertable = false)
+    // insertable = false 解决了jpa  save时自动填充null的问题
     private boolean enabled;
 
     @Override
