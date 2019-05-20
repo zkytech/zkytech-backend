@@ -39,7 +39,7 @@ public class Carousel {
     @NonNull @NotNull(message = "文章Id不能为空") @Column(nullable = false)
      private Long articleId;
 
-    @Column(nullable = false, columnDefinition = "varchar(50) default ''",insertable = false)
+    @Column(nullable = false, columnDefinition = "varchar(50) default ''")
      private String title; //显示在轮播图之上的文字
 
     @Column(nullable = false, columnDefinition = "int(2) default 0",name = "carousel_rank",insertable = false)
