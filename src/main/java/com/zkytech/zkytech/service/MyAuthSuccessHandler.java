@@ -1,12 +1,8 @@
 package com.zkytech.zkytech.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zkytech.zkytech.Utils;
 import com.zkytech.zkytech.bean.MyApiResponse;
 import com.zkytech.zkytech.entity.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -23,7 +19,6 @@ import java.io.IOException;
 @Component
 public class MyAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @Override

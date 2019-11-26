@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -47,6 +49,7 @@ public class ArticleController {
     @GetMapping("/list")
     public MyApiResponse getArticleList(@RequestParam int page, @RequestParam int pageSize, @RequestParam(required = false) String keyword, @RequestParam(required = false) Long endId, @RequestParam(required = false) Long classificationId){
         Sort sort = new Sort(Sort.Direction.DESC, "createdDate");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pageable pageable = PageRequest.of(page-1, pageSize, sort);
         Page articlePage;
         if(endId != null){
